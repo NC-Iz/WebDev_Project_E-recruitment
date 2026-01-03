@@ -55,73 +55,6 @@
         box-shadow: 0 8px 25px rgba(37, 87, 167, 0.4);
     }
 
-    .stat-card {
-        text-align: center;
-        padding: 35px 20px;
-        background: white;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-        transition: all 0.3s;
-        height: 100%;
-    }
-
-    .stat-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
-    }
-
-    .stat-icon {
-        width: 70px;
-        height: 70px;
-        margin: 0 auto 20px;
-        background: linear-gradient(135deg, #2557a7 0%, #164081 100%);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 32px;
-        color: white;
-    }
-
-    .stat-number {
-        font-size: 36px;
-        font-weight: 700;
-        background: linear-gradient(135deg, #2557a7 0%, #164081 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin-bottom: 8px;
-    }
-
-    .category-card {
-        background: white;
-        border-radius: 12px;
-        padding: 30px 20px;
-        text-align: center;
-        transition: all 0.3s;
-        border: 2px solid #f8f9fa;
-        text-decoration: none;
-        display: block;
-        height: 100%;
-    }
-
-    .category-card:hover {
-        border-color: #2557a7;
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(37, 87, 167, 0.15);
-    }
-
-    .category-icon {
-        width: 60px;
-        height: 60px;
-        margin: 0 auto 15px;
-        background: linear-gradient(135deg, #2557a715 0%, #16408115 100%);
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 28px;
-    }
-
     .feature-box {
         text-align: center;
         padding: 20px;
@@ -203,7 +136,7 @@
 
                 <!-- Search Box -->
                 <div class="search-box mx-auto" style="max-width: 900px;">
-                    <form action="#" method="GET">
+                    <form action="{{ route('jobseeker.jobs.index') }}" method="GET">
                         <div class="row g-3 align-items-center">
                             <div class="col-md-5">
                                 <label class="form-label fw-semibold small text-muted mb-2">What</label>
@@ -224,139 +157,12 @@
                     <div class="mt-3">
                         <small class="text-muted">
                             <strong>Popular searches:</strong>
-                            <a href="#" class="text-decoration-none text-muted">Web Developer</a>,
-                            <a href="#" class="text-decoration-none text-muted">Marketing Manager</a>,
-                            <a href="#" class="text-decoration-none text-muted">Data Analyst</a>
+                            <a href="{{ route('jobseeker.jobs.index') }}?search=developer" class="text-decoration-none text-muted">Web Developer</a>,
+                            <a href="{{ route('jobseeker.jobs.index') }}?search=marketing" class="text-decoration-none text-muted">Marketing Manager</a>,
+                            <a href="{{ route('jobseeker.jobs.index') }}?search=analyst" class="text-decoration-none text-muted">Data Analyst</a>
                         </small>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Stats Section -->
-<section class="py-5 bg-light">
-    <div class="container">
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <i class="bi bi-briefcase-fill"></i>
-                    </div>
-                    <div class="stat-number">1,234</div>
-                    <div class="text-muted fw-medium">Live Jobs</div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <i class="bi bi-building"></i>
-                    </div>
-                    <div class="stat-number">567</div>
-                    <div class="text-muted fw-medium">Companies</div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <i class="bi bi-people-fill"></i>
-                    </div>
-                    <div class="stat-number">8,910</div>
-                    <div class="text-muted fw-medium">Candidates</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Browse by Category -->
-<section class="py-5">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="section-title">Browse by Category</h2>
-            <p class="section-subtitle">Find the job that's perfect for you</p>
-        </div>
-
-        <div class="row g-4">
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <a href="#" class="category-card">
-                    <div class="category-icon mx-auto">
-                        <i class="bi bi-code-slash" style="color: #2557a7;"></i>
-                    </div>
-                    <h5 class="fw-bold mb-2" style="color: #2d3748;">IT & Software</h5>
-                    <p class="text-muted small mb-0">312 Open Positions</p>
-                </a>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <a href="#" class="category-card">
-                    <div class="category-icon mx-auto">
-                        <i class="bi bi-megaphone" style="color: #164081;"></i>
-                    </div>
-                    <h5 class="fw-bold mb-2" style="color: #2d3748;">Marketing</h5>
-                    <p class="text-muted small mb-0">145 Open Positions</p>
-                </a>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <a href="#" class="category-card">
-                    <div class="category-icon mx-auto">
-                        <i class="bi bi-cash-stack" style="color: #2557a7;"></i>
-                    </div>
-                    <h5 class="fw-bold mb-2" style="color: #2d3748;">Finance</h5>
-                    <p class="text-muted small mb-0">289 Open Positions</p>
-                </a>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <a href="#" class="category-card">
-                    <div class="category-icon mx-auto">
-                        <i class="bi bi-palette" style="color: #164081;"></i>
-                    </div>
-                    <h5 class="fw-bold mb-2" style="color: #2d3748;">Design</h5>
-                    <p class="text-muted small mb-0">187 Open Positions</p>
-                </a>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <a href="#" class="category-card">
-                    <div class="category-icon mx-auto">
-                        <i class="bi bi-graph-up" style="color: #2557a7;"></i>
-                    </div>
-                    <h5 class="fw-bold mb-2" style="color: #2d3748;">Sales</h5>
-                    <p class="text-muted small mb-0">201 Open Positions</p>
-                </a>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <a href="#" class="category-card">
-                    <div class="category-icon mx-auto">
-                        <i class="bi bi-heart-pulse" style="color: #164081;"></i>
-                    </div>
-                    <h5 class="fw-bold mb-2" style="color: #2d3748;">Healthcare</h5>
-                    <p class="text-muted small mb-0">156 Open Positions</p>
-                </a>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <a href="#" class="category-card">
-                    <div class="category-icon mx-auto">
-                        <i class="bi bi-book" style="color: #2557a7;"></i>
-                    </div>
-                    <h5 class="fw-bold mb-2" style="color: #2d3748;">Education</h5>
-                    <p class="text-muted small mb-0">98 Open Positions</p>
-                </a>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <a href="#" class="category-card">
-                    <div class="category-icon mx-auto">
-                        <i class="bi bi-gear" style="color: #164081;"></i>
-                    </div>
-                    <h5 class="fw-bold mb-2" style="color: #2d3748;">Engineering</h5>
-                    <p class="text-muted small mb-0">267 Open Positions</p>
-                </a>
             </div>
         </div>
     </div>
@@ -423,12 +229,12 @@
             </a>
             @else
             @if(Auth::user()->role === 'employer')
-            <a href="{{ route('employer.dashboard') }}" class="btn btn-cta btn-cta-primary">
-                <i class="bi bi-speedometer2 me-2"></i>Go to Dashboard
+            <a href="{{ route('employer.jobs.index') }}" class="btn btn-cta btn-cta-primary">
+                <i class="bi bi-briefcase me-2"></i>My Jobs
             </a>
             @else
-            <a href="{{ route('jobseeker.dashboard') }}" class="btn btn-cta btn-cta-primary">
-                <i class="bi bi-speedometer2 me-2"></i>Go to Dashboard
+            <a href="{{ route('jobseeker.jobs.index') }}" class="btn btn-cta btn-cta-primary">
+                <i class="bi bi-search me-2"></i>Browse Jobs
             </a>
             @endif
             @endguest
@@ -450,7 +256,7 @@
             <div class="col-lg-2 col-md-4">
                 <h6 class="fw-bold mb-3">For Job Seekers</h6>
                 <ul class="list-unstyled">
-                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Browse Jobs</a></li>
+                    <li class="mb-2"><a href="{{ route('jobseeker.jobs.index') }}" class="text-white-50 text-decoration-none">Browse Jobs</a></li>
                     <li class="mb-2"><a href="{{ route('register') }}" class="text-white-50 text-decoration-none">Create Account</a></li>
                 </ul>
             </div>
@@ -458,7 +264,7 @@
             <div class="col-lg-2 col-md-4">
                 <h6 class="fw-bold mb-3">For Employers</h6>
                 <ul class="list-unstyled">
-                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Post a Job</a></li>
+                    <li class="mb-2"><a href="{{ route('login') }}" class="text-white-50 text-decoration-none">Post a Job</a></li>
                     <li class="mb-2"><a href="{{ route('register') }}" class="text-white-50 text-decoration-none">Register Company</a></li>
                 </ul>
             </div>

@@ -9,7 +9,7 @@
     .page-header {
         background: linear-gradient(135deg, #2557a7 0%, #164081 100%);
         color: white;
-        padding: 50px 0;
+        padding: 50px 20px;
         margin-bottom: 0;
         border-radius: 12px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);

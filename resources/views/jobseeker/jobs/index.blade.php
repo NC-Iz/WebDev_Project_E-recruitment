@@ -266,15 +266,18 @@
                         </select>
                     </div>
 
-                    <div class="col-md-2 d-flex align-items-end gap-2">
-                        <button type="submit" class="btn btn-search flex-grow-1">
-                            <i class="bi bi-search me-1"></i>Search
-                        </button>
-                        @if(request()->hasAny(['search', 'location', 'job_type']))
-                        <a href="{{ route('jobseeker.jobs.index') }}" class="btn btn-reset">
-                            <i class="bi bi-arrow-clockwise"></i>
-                        </a>
-                        @endif
+                    <div class="col-md-2">
+                        <label class="form-label fw-semibold">&nbsp;</label>
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-search" style="flex: 1;">
+                                Search
+                            </button>
+                            @if(request()->hasAny(['search', 'location', 'job_type']))
+                            <a href="{{ route('jobseeker.jobs.index') }}" class="btn btn-reset" style="padding: 0.75rem 1rem;">
+                                <i class="bi bi-arrow-clockwise"></i>
+                            </a>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </form>
@@ -355,7 +358,7 @@
             </p>
             @if(request()->hasAny(['search', 'location', 'job_type']))
             <a href="{{ route('jobseeker.jobs.index') }}" class="btn btn-search">
-                <i class="bi bi-arrow-clockwise me-2"></i>View All Jobs
+                View All Jobs
             </a>
             @endif
         </div>

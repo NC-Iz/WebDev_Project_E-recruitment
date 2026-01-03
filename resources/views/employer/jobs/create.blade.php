@@ -223,7 +223,7 @@
 
                             <!-- Submit Buttons -->
                             <div class="d-flex gap-3 justify-content-end">
-                                <a href="{{ route('employer.dashboard') }}" class="btn btn-secondary">
+                                <a href="{{ route('employer.jobs.index') }}" class="btn btn-secondary">
                                     <i class="bi bi-x-circle me-2"></i>Cancel
                                 </a>
                                 <button type="submit" class="btn btn-primary">

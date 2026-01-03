@@ -281,9 +281,23 @@
                     <i class="bi bi-send-fill me-2"></i>Apply Now
                 </a>
 
-                <button class="btn btn-save">
-                    <i class="bi bi-bookmark me-2"></i>Save Job
-                </button>
+                <!-- Save/Unsave Button -->
+                @if($isSaved)
+                <form action="{{ route('jobseeker.saved.destroy', $job->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-save">
+                        <i class="bi bi-bookmark-fill me-2"></i>Saved
+                    </button>
+                </form>
+                @else
+                <form action="{{ route('jobseeker.jobs.save', $job->id) }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-save">
+                        <i class="bi bi-bookmark me-2"></i>Save Job
+                    </button>
+                </form>
+                @endif
 
                 <hr class="my-4">
 

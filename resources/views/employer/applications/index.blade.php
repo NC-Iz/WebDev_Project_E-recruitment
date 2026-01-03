@@ -273,7 +273,13 @@
         <div class="application-card status-{{ $application->status }}">
             <div class="applicant-info">
                 <div class="applicant-avatar">
+                    @if($application->user->profile && $application->user->profile->profile_picture)
+                    <img src="{{ asset('uploads/profiles/' . $application->user->profile->profile_picture) }}"
+                        alt="{{ $application->user->name }}"
+                        style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+                    @else
                     {{ strtoupper(substr($application->user->name, 0, 1)) }}
+                    @endif
                 </div>
                 <div class="applicant-details">
                     <h4>{{ $application->user->name }}</h4>

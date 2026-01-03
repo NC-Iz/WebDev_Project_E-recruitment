@@ -32,9 +32,9 @@ class ApplicationController extends Controller
         // Get all jobs posted by this employer
         $jobIds = Job::where('company_id', $user->id)->pluck('id');
 
-        // Get all applications for these jobs
+        // Get all applications for these jobs with user profile
         $applications = Application::whereIn('job_id', $jobIds)
-            ->with(['job', 'user'])
+            ->with(['job', 'user', 'user.profile'])
             ->orderBy('created_at', 'desc')
             ->get();
 
@@ -75,7 +75,7 @@ class ApplicationController extends Controller
             abort(403, 'Unauthorized access');
         }
 
-        $application = Application::with(['job', 'user'])->findOrFail($id);
+        $application = Application::with(['job', 'user', 'user.profile'])->findOrFail($id);
 
         // Verify this application is for employer's job
         if ($application->job->company_id !== $user->id) {

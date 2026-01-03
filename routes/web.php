@@ -10,7 +10,8 @@ Auth::routes();
 
 // Employer Routes
 Route::middleware(['auth', 'prevent-back-history'])->prefix('employer')->name('employer.')->group(function () {
-    Route::get('/dashboard', [App\Http\Controllers\Employer\EmployerController::class, 'dashboard'])->name('dashboard');
+    // REMOVE THIS LINE:
+    // Route::get('/dashboard', [App\Http\Controllers\Employer\EmployerController::class, 'dashboard'])->name('dashboard');
 
     // Job Routes
     Route::get('/jobs', [App\Http\Controllers\Employer\JobController::class, 'index'])->name('jobs.index');
@@ -29,8 +30,6 @@ Route::middleware(['auth', 'prevent-back-history'])->prefix('employer')->name('e
 
 // Job Seeker Routes
 Route::middleware(['auth', 'prevent-back-history'])->prefix('jobseeker')->name('jobseeker.')->group(function () {
-    Route::get('/dashboard', [App\Http\Controllers\JobSeeker\JobSeekerController::class, 'dashboard'])->name('dashboard');
-
     // Job Routes
     Route::get('/jobs', [App\Http\Controllers\JobSeeker\JobController::class, 'index'])->name('jobs.index');
     Route::get('/jobs/{id}', [App\Http\Controllers\JobSeeker\JobController::class, 'show'])->name('jobs.show');
@@ -40,6 +39,16 @@ Route::middleware(['auth', 'prevent-back-history'])->prefix('jobseeker')->name('
     Route::post('/jobs/{jobId}/apply', [App\Http\Controllers\JobSeeker\ApplicationController::class, 'store'])->name('applications.store');
     Route::get('/applications', [App\Http\Controllers\JobSeeker\ApplicationController::class, 'index'])->name('applications.index');
     Route::get('/applications/{id}', [App\Http\Controllers\JobSeeker\ApplicationController::class, 'show'])->name('applications.show');
+
+    // Saved Jobs Routes
+    Route::get('/saved', [App\Http\Controllers\JobSeeker\SavedJobController::class, 'index'])->name('saved.index');
+    Route::post('/jobs/{jobId}/save', [App\Http\Controllers\JobSeeker\SavedJobController::class, 'store'])->name('jobs.save');
+    Route::delete('/saved/{jobId}', [App\Http\Controllers\JobSeeker\SavedJobController::class, 'destroy'])->name('saved.destroy');
+
+    // Profile Routes
+    Route::get('/profile', [App\Http\Controllers\JobSeeker\ProfileController::class, 'show'])->name('profile.show');
+    Route::get('/profile/edit', [App\Http\Controllers\JobSeeker\ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile', [App\Http\Controllers\JobSeeker\ProfileController::class, 'update'])->name('profile.update');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

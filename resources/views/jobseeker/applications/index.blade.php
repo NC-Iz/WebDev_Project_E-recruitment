@@ -294,7 +294,7 @@
             <h4 class="mb-3">No Applications Yet</h4>
             <p class="text-muted mb-4">You haven't applied to any jobs yet. Start browsing and apply to positions that match your skills!</p>
             <a href="{{ route('jobseeker.jobs.index') }}" class="btn btn-browse">
-                <i class="bi bi-search me-2"></i>Browse Jobs
+                Browse Jobs
             </a>
         </div>
         @endif

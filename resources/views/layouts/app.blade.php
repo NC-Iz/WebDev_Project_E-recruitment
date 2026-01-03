@@ -163,11 +163,6 @@
                         @auth
                         @if(Auth::user()->role === 'employer')
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('employer.dashboard') }}">
-                                <i class="bi bi-speedometer2"></i> Dashboard
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('employer.jobs.create') }}">
                                 <i class="bi bi-plus-circle"></i> Post Job
                             </a>
@@ -184,13 +179,13 @@
                         </li>
                         @elseif(Auth::user()->role === 'jobseeker')
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('jobseeker.dashboard') }}">
-                                <i class="bi bi-speedometer2"></i> Dashboard
+                            <a class="nav-link" href="{{ route('jobseeker.jobs.index') }}">
+                                <i class="bi bi-search"></i> Browse Jobs
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('jobseeker.jobs.index') }}">
-                                <i class="bi bi-search"></i> Browse Jobs
+                            <a class="nav-link" href="{{ route('jobseeker.saved.index') }}">
+                                <i class="bi bi-bookmark"></i> Saved Jobs
                             </a>
                         </li>
                         <li class="nav-item">
@@ -223,24 +218,30 @@
                         @endif
                         @else
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                @if(isset($userProfile) && $userProfile && $userProfile->profile_picture)
+                                <img src="{{ asset('uploads/profiles/' . $userProfile->profile_picture) }}"
+                                    alt="Profile"
+                                    style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover; border: 2px solid white;">
+                                @else
                                 <span class="user-avatar">
                                     {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
                                 </span>
+                                @endif
                                 <span>{{ Auth::user()->name }}</span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="bi bi-person"></i> My Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="bi bi-gear"></i> Settings
+                                @if(Auth::user()->role === 'jobseeker')
+                                <a class="dropdown-item" href="{{ route('jobseeker.profile.show') }}">
+                                    <i class="bi bi-person-circle"></i> My Profile
                                 </a>
                                 <div class="dropdown-divider"></div>
+                                @endif
+
                                 <a class="dropdown-item text-danger" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                         document.getElementById('logout-form').submit();">
                                     <i class="bi bi-box-arrow-right"></i> {{ __('Logout') }}
                                 </a>
 

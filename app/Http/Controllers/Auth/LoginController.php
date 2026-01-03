@@ -29,9 +29,9 @@ class LoginController extends Controller
         $user = auth()->user();
 
         if ($user->role === 'employer') {
-            return '/employer/dashboard';
+            return '/employer/jobs';
         } elseif ($user->role === 'jobseeker') {
-            return '/jobseeker/dashboard';
+            return '/jobseeker/jobs';
         }
 
         // Default fallback

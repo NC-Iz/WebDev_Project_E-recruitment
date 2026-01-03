@@ -258,7 +258,13 @@
                     <!-- Applicant Info -->
                     <div class="applicant-header">
                         <div class="applicant-avatar-large">
+                            @if($application->user->profile && $application->user->profile->profile_picture)
+                            <img src="{{ asset('uploads/profiles/' . $application->user->profile->profile_picture) }}"
+                                alt="{{ $application->user->name }}"
+                                style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;">
+                            @else
                             {{ strtoupper(substr($application->user->name, 0, 1)) }}
+                            @endif
                         </div>
                         <h4 class="fw-bold mb-2">{{ $application->user->name }}</h4>
                         <p class="text-muted mb-0">{{ $application->user->email }}</p>

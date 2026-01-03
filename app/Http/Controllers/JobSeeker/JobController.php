@@ -63,12 +63,6 @@ class JobController extends Controller
      */
     public function show($id)
     {
-        $user = Auth::user();
-
-        if ($user->role !== 'jobseeker') {
-            abort(403, 'Unauthorized access');
-        }
-
         $job = Job::where('status', 'open')
             ->where('deadline', '>=', now())
             ->findOrFail($id);
@@ -76,6 +70,14 @@ class JobController extends Controller
         // Increment views
         $job->increment('views');
 
-        return view('jobseeker.jobs.show', compact('job'));
+        // Check if user is logged in and if job is saved
+        $isSaved = false;
+        if (auth()->check() && auth()->user()->role === 'jobseeker') {
+            $isSaved = \App\Models\SavedJob::where('user_id', auth()->id())
+                ->where('job_id', $id)
+                ->exists();
+        }
+
+        return view('jobseeker.jobs.show', compact('job', 'isSaved'));
     }
 }
