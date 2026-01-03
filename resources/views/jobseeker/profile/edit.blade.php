@@ -99,6 +99,28 @@
         color: #6c757d;
         margin-top: 6px;
     }
+
+    .current-file {
+        background: #f8f9fa;
+        border: 2px solid #e9ecef;
+        border-radius: 8px;
+        padding: 12px 16px;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .current-file i {
+        color: #2557a7;
+        font-size: 1.5rem;
+    }
+
+    .file-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
 </style>
 
 <div class="profile-container">
@@ -234,6 +256,46 @@
                         <span class="invalid-feedback">{{ $message }}</span>
                         @enderror
                         <small class="info-text">Maximum 1000 characters</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resume Upload Section -->
+            <div class="profile-card">
+                <h3 class="section-title">
+                    <i class="bi bi-file-earmark-text me-2"></i>Resume / CV
+                </h3>
+
+                <div class="row g-3">
+                    @if($profile->resume)
+                    <div class="col-md-12">
+                        <div class="current-file">
+                            <div class="file-info">
+                                <i class="bi bi-file-earmark-pdf-fill"></i>
+                                <div>
+                                    <strong>Current Resume:</strong>
+                                    <span class="ms-2">{{ $profile->resume }}</span>
+                                </div>
+                            </div>
+                            <a href="{{ asset('uploads/resumes/' . $profile->resume) }}"
+                                target="_blank"
+                                class="btn btn-sm btn-outline-primary">
+                                <i class="bi bi-eye me-1"></i>View
+                            </a>
+                        </div>
+                    </div>
+                    @endif
+
+                    <div class="col-md-12">
+                        <label class="form-label">
+                            {{ $profile->resume ? 'Upload New Resume (Optional)' : 'Upload Resume' }}
+                        </label>
+                        <input type="file" class="form-control @error('resume') is-invalid @enderror"
+                            name="resume" accept=".pdf,.doc,.docx">
+                        @error('resume')
+                        <span class="invalid-feedback">{{ $message }}</span>
+                        @enderror
+                        <small class="info-text">Accepted formats: PDF, DOC, DOCX. Max size: 5MB</small>
                     </div>
                 </div>
             </div>

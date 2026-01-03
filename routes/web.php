@@ -10,9 +10,6 @@ Auth::routes();
 
 // Employer Routes
 Route::middleware(['auth', 'prevent-back-history'])->prefix('employer')->name('employer.')->group(function () {
-    // REMOVE THIS LINE:
-    // Route::get('/dashboard', [App\Http\Controllers\Employer\EmployerController::class, 'dashboard'])->name('dashboard');
-
     // Job Routes
     Route::get('/jobs', [App\Http\Controllers\Employer\JobController::class, 'index'])->name('jobs.index');
     Route::get('/jobs/create', [App\Http\Controllers\Employer\JobController::class, 'create'])->name('jobs.create');
@@ -49,6 +46,11 @@ Route::middleware(['auth', 'prevent-back-history'])->prefix('jobseeker')->name('
     Route::get('/profile', [App\Http\Controllers\JobSeeker\ProfileController::class, 'show'])->name('profile.show');
     Route::get('/profile/edit', [App\Http\Controllers\JobSeeker\ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile', [App\Http\Controllers\JobSeeker\ProfileController::class, 'update'])->name('profile.update');
+});
+
+// Resume Download Route (outside the middleware group, only needs auth)
+Route::middleware(['auth'])->prefix('jobseeker')->name('jobseeker.')->group(function () {
+    Route::get('/profile/{userId}/resume/download', [App\Http\Controllers\JobSeeker\ProfileController::class, 'downloadResume'])->name('profile.downloadResume');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

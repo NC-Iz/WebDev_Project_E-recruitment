@@ -154,6 +154,44 @@
         color: white;
     }
 
+    .btn-resume {
+        background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);
+        color: white;
+        border: none;
+        padding: 0.75rem;
+        border-radius: 8px;
+        font-weight: 600;
+        width: 100%;
+        transition: all 0.3s;
+        text-decoration: none;
+        display: inline-block;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .btn-resume:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(40, 167, 69, 0.3);
+        color: white;
+    }
+
+    .resume-info {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-left: 4px solid #28a745;
+    }
+
+    .no-resume {
+        background: #fff3cd;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-left: 4px solid #ffc107;
+        color: #856404;
+    }
+
     .badge {
         padding: 0.6rem 1.2rem;
         font-weight: 600;
@@ -234,6 +272,60 @@
                     <div class="section-content">{{ $application->cover_letter }}</div>
                 </div>
 
+                <!-- Applicant Profile Information -->
+                @if($application->user->profile)
+                <div class="content-card">
+                    <h2 class="section-title">
+                        <i class="bi bi-person-badge me-2"></i>Applicant Profile
+                    </h2>
+
+                    @if($application->user->profile->bio)
+                    <div class="mb-4">
+                        <h5 class="fw-bold mb-3">About</h5>
+                        <div class="section-content">{{ $application->user->profile->bio }}</div>
+                    </div>
+                    @endif
+
+                    @if($application->user->profile->skills)
+                    <div class="mb-4">
+                        <h5 class="fw-bold mb-3">Skills</h5>
+                        <div class="section-content">{{ $application->user->profile->skills }}</div>
+                    </div>
+                    @endif
+
+                    @if($application->user->profile->experience)
+                    <div class="mb-4">
+                        <h5 class="fw-bold mb-3">Work Experience</h5>
+                        <div class="section-content">{{ $application->user->profile->experience }}</div>
+                    </div>
+                    @endif
+
+                    @if($application->user->profile->education)
+                    <div class="mb-4">
+                        <h5 class="fw-bold mb-3">Education</h5>
+                        <div class="section-content">{{ $application->user->profile->education }}</div>
+                    </div>
+                    @endif
+
+                    @if($application->user->profile->phone || $application->user->profile->address)
+                    <div>
+                        <h5 class="fw-bold mb-3">Contact Information</h5>
+                        @if($application->user->profile->phone)
+                        <p><i class="bi bi-telephone me-2 text-primary"></i>{{ $application->user->profile->phone }}</p>
+                        @endif
+                        @if($application->user->profile->address || $application->user->profile->city || $application->user->profile->state)
+                        <p><i class="bi bi-geo-alt me-2 text-primary"></i>
+                            @if($application->user->profile->address){{ $application->user->profile->address }}, @endif
+                            @if($application->user->profile->city){{ $application->user->profile->city }}, @endif
+                            @if($application->user->profile->state){{ $application->user->profile->state }}, @endif
+                            {{ $application->user->profile->country }}
+                        </p>
+                        @endif
+                    </div>
+                    @endif
+                </div>
+                @endif
+
                 <!-- Job Details -->
                 <div class="content-card">
                     <h2 class="section-title">
@@ -269,6 +361,29 @@
                         <h4 class="fw-bold mb-2">{{ $application->user->name }}</h4>
                         <p class="text-muted mb-0">{{ $application->user->email }}</p>
                     </div>
+
+                    <!-- Resume Download Section -->
+                    @if($application->user->profile && $application->user->profile->resume)
+                    <div class="resume-info">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-file-earmark-pdf-fill me-2" style="font-size: 1.5rem; color: #28a745;"></i>
+                            <strong>Resume Available</strong>
+                        </div>
+                        <p class="mb-0 small text-muted">{{ $application->user->profile->resume }}</p>
+                    </div>
+                    <a href="{{ route('jobseeker.profile.downloadResume', $application->user->id) }}"
+                        class="btn btn-resume"
+                        target="_blank">
+                        <i class="bi bi-download me-2"></i>Download Resume
+                    </a>
+                    @else
+                    <div class="no-resume">
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                            <strong>No Resume Uploaded</strong>
+                        </div>
+                    </div>
+                    @endif
 
                     <!-- Current Status -->
                     <h5 class="fw-bold mb-3">Current Status</h5>
