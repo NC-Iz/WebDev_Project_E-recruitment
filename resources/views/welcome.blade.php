@@ -122,6 +122,84 @@
         color: #2557a7;
         transform: translateY(-2px);
     }
+
+    /* Video Tutorials Section */
+    .tutorials-section {
+        background-color: #f8f9fa;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #2d3748;
+        margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+        font-size: 1.2rem;
+        color: #6c757d;
+    }
+
+    .video-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .video-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .video-wrapper {
+        position: relative;
+        padding-bottom: 56.25%;
+        /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+    }
+
+    .video-wrapper iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .video-info {
+        padding: 25px;
+        flex-grow: 1;
+    }
+
+    .video-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #2557a7;
+        margin-bottom: 10px;
+    }
+
+    .video-description {
+        color: #6c757d;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+        .section-title {
+            font-size: 2rem;
+        }
+
+        .video-info {
+            padding: 20px;
+        }
+    }
 </style>
 
 <!-- Hero Section -->
@@ -207,6 +285,102 @@
                     <div class="badge bg-primary mb-3" style="font-size: 14px;">Step 3</div>
                     <h4 class="fw-bold mb-3">Get Hired</h4>
                     <p class="text-muted">Track your applications and connect with employers to land your dream job</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Video Tutorials Section -->
+<section class="tutorials-section py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title">Video Tutorials & Tips</h2>
+            <p class="section-subtitle">Learn everything you need to succeed in your job search</p>
+        </div>
+
+        <div class="row g-4">
+            <!-- Video 1: How to Use Website -->
+            <div class="col-lg-6">
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe
+                            src="https://www.youtube.com/embed/U24b920GPEo"
+                            title="How to Use E-Recruitment Website"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <h5 class="video-title">
+                            How to Use This Website
+                        </h5>
+                        <p class="video-description">Complete tutorial on navigating and using all features of the E-Recruitment platform</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 2: Interview Tips -->
+            <div class="col-lg-6">
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe
+                            src="https://www.youtube.com/embed/HG68Ymazo18"
+                            title="Interview Tips"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <h5 class="video-title">
+                            Interview Tips & Tricks
+                        </h5>
+                        <p class="video-description">Master the art of job interviews with expert advice and proven strategies</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 3: What Happens After Apply -->
+            <div class="col-lg-6">
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe
+                            src="https://www.youtube.com/embed/NTIBXS7pbBs"
+                            title="What Happens After You Submit Your Resume"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <h5 class="video-title">
+                            After You Submit Your Resume
+                        </h5>
+                        <p class="video-description">Understand the application review process and what happens behind the scenes</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 4: How to Write Resume -->
+            <div class="col-lg-6">
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe
+                            src="https://www.youtube.com/embed/Tt08KmFfIYQ"
+                            title="How to Write a Resume"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <h5 class="video-title">
+                            How to Write a Perfect Resume
+                        </h5>
+                        <p class="video-description">Create a professional resume that gets noticed by employers and recruiters</p>
+                    </div>
                 </div>
             </div>
         </div>
